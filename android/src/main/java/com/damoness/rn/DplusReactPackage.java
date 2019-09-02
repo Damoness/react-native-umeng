@@ -1,4 +1,4 @@
-package com.damoness.rn.umeng;
+package com.damoness.rn;
 
 import com.facebook.react.ReactPackage;
 import com.facebook.react.bridge.NativeModule;

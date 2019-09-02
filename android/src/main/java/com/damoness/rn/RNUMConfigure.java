@@ -1,4 +1,4 @@
-package com.damoness.rn.umeng;
+package com.damoness.rn;
 
 import android.annotation.TargetApi;
 import android.content.Context;

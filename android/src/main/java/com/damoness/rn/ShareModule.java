@@ -1,4 +1,4 @@
-package com.damoness.rn.umeng;
+package com.damoness.rn;
 
 import android.app.Activity;
 import android.os.Handler;
