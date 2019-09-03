@@ -5,7 +5,8 @@
   "description": "TODO",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "pb": "npm publish --access=public --registry http://www.npmjs.org "
   },
   "repository": {
     "type": "git",
