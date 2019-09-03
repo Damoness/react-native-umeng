@@ -1,4 +1,4 @@
-package com.damoness.rn;
+package com.damoness.rn.umeng;
 
 import com.facebook.react.bridge.Callback;
 import com.facebook.react.bridge.ReactApplicationContext;
