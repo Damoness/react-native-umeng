@@ -1,9 +1,9 @@
 {
   "name": "@damoness/react-native-umeng",
   "title": "React Native Umeng",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "TODO",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "pb": "npm publish --access=public --registry http://www.npmjs.org "
