@@ -36,8 +36,8 @@
 
 ## Usage
 ```javascript
-import DMNUmeng from 'react-native-umeng';
+import {ShareUtil} from 'react-native-umeng';
 
 // TODO: What to do with the module?
-DMNUmeng;
+ShareUtil;
 ```

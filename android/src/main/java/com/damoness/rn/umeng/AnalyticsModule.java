@@ -24,8 +24,8 @@ import java.util.Map;
  * 示例： SDK 接口桥接封装类，并未封装SDK所有API(仅封装常用API接口)，设置配置参数类API应在Android原生代码
  * 调用，例如：SDK初始化函数，Log开关函数，子进程自定义事件埋点使能函数，异常捕获功能使能/关闭函数等等。
  * 如果还需要封装其它SDK API，请参考本例自行封装
- * Created by wangfei on 17/8/28.
- * -- 适配海棠版(common 2.0.0 + analytics 8.0.0) modify by yujie on 18/12/28
+ * Created by Damoness on 19/8/28.
+ * -- 适配海棠版(common 2.0.0 + analytics 8.0.0) modify by Damoness on 18/12/28
  */
 
 public class AnalyticsModule extends ReactContextBaseJavaModule {

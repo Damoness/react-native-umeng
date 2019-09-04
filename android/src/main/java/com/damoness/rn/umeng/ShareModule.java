@@ -25,7 +25,7 @@ import com.umeng.socialize.media.UMWeb;
 import java.util.Map;
 
 /**
- * Created by wangfei on 17/8/28.
+ * Created by Damoness on 19/8/28.
  */
 
 public class ShareModule extends ReactContextBaseJavaModule {
