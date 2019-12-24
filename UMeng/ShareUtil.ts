@@ -73,11 +73,11 @@ export default class ShareUtil {
 
      /**
       * 
-      * @param text 
-      * @param icon 
-      * @param link 
-      * @param title 
-      * @param platform 
+      * @param text 内容
+      * @param icon 图片
+      * @param link  跳转链接 : 如果为空,分享的内容为icon的图片, 不为空 则是 标题, 内容, 图标 模式. 
+      * @param title 标题
+      * @param platform 平台
       */
     static async share(text:string,icon:string,link:string,title:string,platform:Platform){
 

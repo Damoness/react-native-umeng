@@ -1,7 +1,7 @@
 {
   "name": "@damoness/react-native-umeng",
   "title": "React Native Umeng",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "TODO",
   "main": "index.ts",
   "scripts": {
