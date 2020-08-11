@@ -26,8 +26,8 @@ Pod::Spec.new do |s|
   s.dependency "UMCSecurityPlugins"
   s.dependency "UMCAnalytics" ## 统计 SDK
   s.dependency "UMCShare/UI" # U-Share SDK UI模块（分享面板，建议添加）
-  s.dependency "UMCShare/Social/ReducedWeChat" # 集成微信(精简版0.2M)
-  s.dependency "UMCShare/Social/ReducedQQ" # 集成QQ/QZone/TIM(精简版0.5M)
+  s.dependency "UMCShare/Social/WeChat" # 集成微信(完整版14.4M)
+  s.dependency "UMCShare/Social/QQ" # 集成QQ/QZone/TIM(完整版7.6M)
   s.dependency "UMCPush"
 
 end
