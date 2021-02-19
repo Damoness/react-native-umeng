@@ -8,15 +8,15 @@ const AnalyticsModule = NativeModules.UMAnalyticsModule;
 
 export default class AnalyticsUtil {
   static onEvent(eventId: string) {
-    AnalyticsModule.event(eventId);
+    AnalyticsModule.onEvent(eventId);
   }
 
   static onEventWithLabel(eventId: string, eventLabel: string) {
-    AnalyticsModule.event(eventId, eventLabel);
+    AnalyticsModule.onEventWithLabel(eventId, eventLabel);
   }
 
   static onEventWithMap(eventId: string, parameters: any) {
-    AnalyticsModule.event(eventId, parameters);
+    AnalyticsModule.onEventWithMap(eventId, parameters);
   }
 
   static onPageBegin(pageName: string) {

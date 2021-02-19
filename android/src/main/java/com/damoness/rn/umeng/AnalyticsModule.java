@@ -43,16 +43,14 @@ public class AnalyticsModule extends ReactContextBaseJavaModule {
 
     /********************************U-App统计*********************************/
     @ReactMethod
-    public void onPageStart(String pageName) {
+    public void onPageBegin(String pageName) {
         //android.util.Log.e("xxxxxx","onPageStart="+mPageName);
-
         MobclickAgent.onPageStart(pageName);
     }
 
     @ReactMethod
     public void onPageEnd(String pageName) {
         //android.util.Log.e("xxxxxx","onPageEnd="+mPageName);
-
         MobclickAgent.onPageEnd(pageName);
 
     }
@@ -61,7 +59,7 @@ public class AnalyticsModule extends ReactContextBaseJavaModule {
         MobclickAgent.onEvent(context, eventId);
     }
     @ReactMethod
-    public void onEventWithLable(String eventId, String eventLabel) {
+    public void onEventWithLabel(String eventId, String eventLabel) {
         MobclickAgent.onEvent(context, eventId, eventLabel);
     }
     @ReactMethod
