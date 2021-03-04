@@ -31,7 +31,7 @@ android {
 
   defaultConfig {
 
-      manifestPlaceholders = [qqappid: "100424468"]
+    manifestPlaceholders = [qqappid: "100424468"]
 
     minSdkVersion safeExtGet('minSdkVersion', DEFAULT_MIN_SDK_VERSION)
     targetSdkVersion safeExtGet('targetSdkVersion', DEFAULT_TARGET_SDK_VERSION)
@@ -52,6 +52,7 @@ repositories {
         url "$projectDir/../node_modules/react-native/android"
     }
     maven { url 'https://dl.bintray.com/umsdk/release' }
+
     mavenCentral()
 }
 
