@@ -2,7 +2,7 @@ PODS:
   - boost-for-react-native (1.63.0)
   - CocoaAsyncSocket (7.6.4)
   - CocoaLibEvent (1.0.0)
-  - damoness-react-native-umeng (0.1.0):
+  - damoness-react-native-umeng (1.4.0):
     - React-Core
     - UMCCommon
     - UMCPush
@@ -460,7 +460,7 @@ SPEC CHECKSUMS:
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
   CocoaAsyncSocket: 694058e7c0ed05a9e217d1b3c7ded962f4180845
   CocoaLibEvent: 2fab71b8bd46dd33ddb959f7928ec5909f838e3f
-  damoness-react-native-umeng: 8c74b2517649426a5aca8eb5a0f0d976bfb7ebb5
+  damoness-react-native-umeng: cf7aac1aaece3a2fcf381dff82255909a8312a76
   DoubleConversion: cde416483dac037923206447da6e1454df403714
   FBLazyVector: 3bb422f41b18121b71783a905c10e58606f7dc3e
   FBReactNativeSpec: f2c97f2529dd79c083355182cc158c9f98f4bd6e
