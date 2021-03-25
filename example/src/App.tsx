@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { StyleSheet, View, Button } from 'react-native';
+import { StyleSheet, View, Button, Alert } from 'react-native';
 import { ShareUtil, Platform } from '@damoness/react-native-umeng';
 
 export default function App() {
@@ -12,8 +12,20 @@ export default function App() {
           try {
             let re = await ShareUtil.auth(Platform.Wechat);
             console.log(re);
+            Alert.alert(JSON.stringify(re));
           } catch (error) {
             console.log('error', error);
+          }
+        }}
+      />
+      <Button
+        title={'微信登录 报错'}
+        onPress={async () => {
+          try {
+            await ShareUtil.auth(Platform.Wechat + 2);
+          } catch (error) {
+            console.log('error', error);
+            Alert.alert(JSON.stringify(error));
           }
         }}
       />
@@ -27,7 +39,20 @@ export default function App() {
             [Platform.Wechat, Platform.Wechat_TimeLine]
           );
         }}
-        title="分享面板"
+        title="分享面板 - 分享"
+      />
+
+      <Button
+        onPress={() => {
+          ShareUtil.shareboard(
+            '内容',
+            'http://t1.qichangv.com/images/logo/favition.png',
+            '',
+            '标题',
+            [Platform.Wechat, Platform.Wechat_TimeLine]
+          );
+        }}
+        title="分享面板 - 分享图片"
       />
     </View>
   );

@@ -58,7 +58,7 @@ export default class ShareUtil {
     link: string,
     title: string,
     platforms: Platform[]
-  ) {
+  ): Promise<String> {
     return new Promise((resolve, reject) => {
       ShareModule.shareboard(
         text,
@@ -66,8 +66,8 @@ export default class ShareUtil {
         link,
         title,
         platforms,
-        (code: number, result: any, message: string) => {
-          code === 200 ? resolve(result) : reject(message);
+        (code: number, message: string) => {
+          code === 200 ? resolve(message) : reject(message);
         }
       );
     });
@@ -87,7 +87,7 @@ export default class ShareUtil {
     link: string,
     title: string,
     platform: Platform
-  ) {
+  ): Promise<string> {
     return new Promise((resolve, reject) => {
       ShareModule.share(
         text,
@@ -95,12 +95,12 @@ export default class ShareUtil {
         link,
         title,
         platform,
-        (code: number, result: any, message: string) => {
+        (code: number, message: string) => {
           if (code === 200) {
             //成功
-            resolve(result);
+            resolve(message);
           } else {
-            console.log(code, result, message);
+            console.log(code, message);
             reject(message);
           }
         }
