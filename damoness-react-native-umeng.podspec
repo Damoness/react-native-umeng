@@ -17,12 +17,17 @@ Pod::Spec.new do |s|
 
   s.dependency "React-Core"
 
-    #友盟集成
-    s.dependency "UMCCommon"
-    s.dependency "UMCSecurityPlugins"
-    s.dependency "UMCPush"
-    s.dependency "UMCShare/UI" # U-Share SDK UI模块（分享面板，建议添加）
-    s.dependency "UMCShare/Social/WeChat" # 集成微信(完整版14.4M)
-    s.dependency "UMCShare/Social/QQ" # 集成QQ/QZone/TIM(完整版7.6M)
+    #友盟统计
+    s.dependency "UMCommon"
+    s.dependency "UMDevice"
+
+    #友盟分享
+    s.dependency "UMShare/UI" # U-Share SDK UI模块（分享面板，建议添加）
+    s.dependency "UMShare/Social/WeChat" # 集成微信(完整版14.4M)
+    s.dependency "UMShare/Social/QQ" # 集成QQ/QZone/TIM(完整版7.6M)
+
+    #友盟推送
+    s.dependency "UMPush"
+
 
 end

@@ -14,9 +14,10 @@
 // ------
 //友盟
 #import <UMCommon/UMCommon.h>
-#import <UMShare/UMShare.h>
 //友盟统计
 #import <UMCommon/MobClick.h>
+
+#import <UMShare/UMShare.h>
 
 //友盟key
 #define UMAppKey @"5c998a3561f564fc5e0011fe"
