@@ -8,9 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import <UMCommon/UMCommon.h>
+#import <React/RCTBridgeModule.h>
 
-@interface RNUMConfigure : NSObject
+@interface RNUMConfigure : NSObject <RCTBridgeModule>
 
-+ (void)initWithAppkey:(NSString *)appkey channel:(NSString *)channel;
 
 @end

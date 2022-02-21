@@ -1,4 +1,18 @@
 {
   "name": "ReactNativeUmengExample",
-  "displayName": "ReactNativeUmeng Example"
+  "displayName": "ReactNativeUmeng Example",
+  "umeng": {
+    "appKey": "5c998a3561f564fc5e0011fe"
+  },
+  "wechat": {
+    "appKey": "wx52dafcf5b9efb111",
+    "appSecret": "9a41a18395afb5744f2ac73e6ad06bde",
+    "universalLink": "https://ae7b.lkme.cc/EzC/"
+  },
+  "wechatWork": {
+    "appKey": "wwauth5a3c9b5d4dbd50d3000004",
+    "appSecret": "hGiRRNadgDGR4bfeTwKdoeycXmin8OrFJNi44vuuePM",
+    "corpId": "ww5a3c9b5d4dbd50d3",
+    "agentId": "1000004"
+  }
 }

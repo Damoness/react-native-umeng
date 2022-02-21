@@ -25,6 +25,7 @@ Pod::Spec.new do |s|
     s.dependency "UMShare/UI" # U-Share SDK UI模块（分享面板，建议添加）
     s.dependency "UMShare/Social/WeChat" # 集成微信(完整版14.4M)
     s.dependency "UMShare/Social/QQ" # 集成QQ/QZone/TIM(完整版7.6M)
+    s.dependency "UMShare/Social/WeChatWork"  # 集成企业微信
 
     #友盟推送
     s.dependency "UMPush"

@@ -19,6 +19,8 @@
 
 #import <UMShare/UMShare.h>
 
+#import "WWKApiObject.h"
+
 //友盟key
 #define UMAppKey @"5c998a3561f564fc5e0011fe"
 
@@ -54,7 +56,7 @@ static void InitializeFlipper(UIApplication *application) {
     InitializeFlipper(application);
   #endif
   
-  [self initUMeng];
+  //[self initUMeng];
   
   RCTBridge *bridge = [[RCTBridge alloc] initWithDelegate:self launchOptions:launchOptions];
   RCTRootView *rootView = [[RCTRootView alloc] initWithBridge:bridge
@@ -98,6 +100,9 @@ static void InitializeFlipper(UIApplication *application) {
   /* 设置微信的appKey和appSecret */
   [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_WechatSession appKey:WXAppKey appSecret:WXAppSecret redirectURL:nil];
   
+  
+  /* 设置企业微信 */
+//  [UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_WechatWork appKey:<#(NSString *)#> appSecret:<#(NSString *)#> redirectURL:<#(NSString *)#>
 
 }
 

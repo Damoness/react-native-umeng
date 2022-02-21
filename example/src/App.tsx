@@ -7,7 +7,20 @@ import {
   Alert,
   SafeAreaView,
 } from 'react-native';
-import { ShareUtil, Platform } from '@damoness/react-native-umeng';
+import { ShareUtil, Platform, Configure } from '@damoness/react-native-umeng';
+
+import appJSON from '../app.json';
+
+let { wechat, umeng, wechatWork } = appJSON;
+
+Configure.initApp(umeng.appKey, 'RN');
+Configure.setWeChat(wechat.appKey, wechat.appSecret, wechat.universalLink);
+Configure.setWeChatWork(
+  wechatWork.appKey,
+  wechatWork.corpId,
+  wechatWork.agentId
+);
+
 export default function App() {
   return (
     <SafeAreaView style={styles.container}>
@@ -17,6 +30,18 @@ export default function App() {
           onPress={async () => {
             try {
               let re = await ShareUtil.auth(Platform.Wechat);
+              console.log(re);
+              Alert.alert(JSON.stringify(re));
+            } catch (error) {
+              console.log('error', error);
+            }
+          }}
+        />
+        <Button
+          title={'企业微信登录'}
+          onPress={async () => {
+            try {
+              let re = await ShareUtil.auth(Platform.WechatWork);
               console.log(re);
               Alert.alert(JSON.stringify(re));
             } catch (error) {
@@ -35,6 +60,7 @@ export default function App() {
             }
           }}
         />
+
         <Button
           onPress={() => {
             ShareUtil.shareboard(
@@ -42,7 +68,7 @@ export default function App() {
               'http://t1.qichangv.com/images/logo/favition.png',
               'https://hot.cnbeta.com/articles/game/1097481.htm',
               '标题',
-              [Platform.Wechat, Platform.Wechat_TimeLine]
+              [Platform.Wechat, Platform.Wechat_TimeLine, Platform.WechatWork]
             );
           }}
           title="分享面板 - 分享"
@@ -55,7 +81,7 @@ export default function App() {
               'http://t1.qichangv.com/images/logo/favition.png',
               '',
               '标题',
-              [Platform.Wechat, Platform.Wechat_TimeLine]
+              [Platform.Wechat, Platform.Wechat_TimeLine, Platform.WechatWork]
             );
           }}
           title="分享面板 - 分享图片"

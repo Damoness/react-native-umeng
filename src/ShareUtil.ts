@@ -22,6 +22,7 @@ type AuthUserInfo = {
 export enum Platform {
   Wechat = 2, //微信
   Wechat_TimeLine = 3, //朋友圈
+  WechatWork = 4, //企业微信
 }
 
 /**
