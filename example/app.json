@@ -4,15 +4,26 @@
   "umeng": {
     "appKey": "5c998a3561f564fc5e0011fe"
   },
-  "wechat": {
+  "wechat-qichang": {
     "appKey": "wx52dafcf5b9efb111",
     "appSecret": "9a41a18395afb5744f2ac73e6ad06bde",
     "universalLink": "https://ae7b.lkme.cc/EzC/"
   },
+  "wechat": {
+    "name": "中欧SCRM-Test",
+    "appKey": "wx027de62cf741667e",
+    "appSecret": "2be841b3bac5e82323bbf49e2901853a",
+    "universalLink": "https://testzowxzb.newtamp.cn/tolink/",
+    "ios_bundle_id": "com.zofund.crmmanage.test",
+    "android_bundle_id": "com.zofund.crmmanage.test",
+    "android_signature": "028a8cf6795c1d3c1856fdab7becf8ef"
+  },
   "wechatWork": {
-    "appKey": "wwauth5a3c9b5d4dbd50d3000004",
-    "appSecret": "hGiRRNadgDGR4bfeTwKdoeycXmin8OrFJNi44vuuePM",
+    "appKey": "wwauth5a3c9b5d4dbd50d3000005",
     "corpId": "ww5a3c9b5d4dbd50d3",
-    "agentId": "1000004"
+    "agentId": "1000005",
+    "ios_bundle_id": "com.zofund.crmmanage.test",
+    "android_bundle_id": "com.zofund.crmmanage.test",
+    "android_signature": "028a8cf6795c1d3c1856fdab7becf8ef"
   }
 }

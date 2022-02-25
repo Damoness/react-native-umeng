@@ -131,7 +131,7 @@ android {
 
         manifestPlaceholders = [qqappid: "100424468"]
 
-        applicationId "com.example.damonessreactnativeumeng"
+        applicationId "com.zofund.crmmanage.test"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
@@ -146,21 +146,23 @@ android {
         }
     }
     signingConfigs {
-        debug {
-            storeFile file('debug.keystore')
-            storePassword 'android'
-            keyAlias 'androiddebugkey'
-            keyPassword 'android'
+        newbanker {
+            storeFile file(KEY_STORE_FILE)
+            storePassword KEY_STORE_PASSWORD
+            keyAlias KEY_ALIAS
+            keyPassword KEY_PASSWORD
+            v1SigningEnabled true
+            v2SigningEnabled true
         }
     }
     buildTypes {
         debug {
-            signingConfig signingConfigs.debug
+            signingConfig signingConfigs.newbanker
         }
         release {
             // Caution! In production, you need to generate your own keystore file.
             // see https://reactnative.dev/docs/signed-apk-android.
-            signingConfig signingConfigs.debug
+            signingConfig signingConfigs.newbanker
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
@@ -187,7 +189,18 @@ dependencies {
     implementation "com.facebook.react:react-native:+"  // From node_modules
 
 
-    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
+    //友盟
+    implementation  'com.umeng.umsdk:common:9.4.4'//必选
+    implementation  'com.umeng.umsdk:asms:1.4.1'//必选
+    implementation  'com.umeng.umsdk:link:1.2.0'//集成U-Link，可选，如要统计分享回流次数和分享新增用户指标则必选
+    implementation  'com.umeng.umsdk:share-core:7.1.7'//分享核心库，必选
+    implementation  'com.umeng.umsdk:share-board:7.1.7'//分享面板功能，可选
+    implementation  'com.umeng.umsdk:share-wx:7.1.7'//微信完整版
+    implementation 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:6.8.0'//微信官方依赖库，必选
+
+   implementation 'com.android.support:support-v4:26.1.0'
+
+  implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
     debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}") {
       exclude group:'com.facebook.fbjni'
     }
@@ -199,13 +212,6 @@ dependencies {
         exclude group:'com.facebook.flipper'
     }
 
-    //友盟
-    implementation  'com.umeng.umsdk:analytics:8.0.0'
-    implementation  'com.umeng.umsdk:common:2.0.0'
-    implementation 'com.umeng.umsdk:share-core:6.9.6'
-    implementation 'com.umeng.umsdk:share-wx:6.9.6'
-    implementation 'com.umeng.umsdk:share-qq:6.9.6'
-    implementation 'com.umeng.umsdk:share-sina:6.9.6'
 
     if (enableHermes) {
         def hermesPath = "../../node_modules/hermes-engine/android/";

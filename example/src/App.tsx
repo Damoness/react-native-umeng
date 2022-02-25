@@ -6,20 +6,25 @@ import {
   Button,
   Alert,
   SafeAreaView,
+  Platform as Platform1,
 } from 'react-native';
-import { ShareUtil, Platform, Configure } from '@damoness/react-native-umeng';
+import { ShareUtil, Configure, Platform } from '@damoness/react-native-umeng';
 
 import appJSON from '../app.json';
 
-let { wechat, umeng, wechatWork } = appJSON;
+let { umeng, wechatWork, wechat } = appJSON;
 
-Configure.initApp(umeng.appKey, 'RN');
-Configure.setWeChat(wechat.appKey, wechat.appSecret, wechat.universalLink);
-Configure.setWeChatWork(
-  wechatWork.appKey,
-  wechatWork.corpId,
-  wechatWork.agentId
-);
+// let wechat = appJSON['wechat-BieXiaBuyCar'];
+
+if (Platform1.OS === 'ios') {
+  Configure.initApp(umeng.appKey, 'RN');
+  Configure.setWeChat(wechat.appKey, wechat.appSecret, wechat.universalLink);
+  Configure.setWeChatWork(
+    wechatWork.appKey,
+    wechatWork.corpId,
+    wechatWork.agentId
+  );
+}
 
 export default function App() {
   return (

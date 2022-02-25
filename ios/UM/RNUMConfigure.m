@@ -47,6 +47,10 @@ RCT_EXPORT_METHOD(setWeChat:(NSString *)appkey appSecret:(NSString *)appSecret u
 
 }
 
+
+/**
+ 设置企业微信
+ */
 RCT_EXPORT_METHOD(setWeChatWork:(NSString *)appkey corpId:(NSString *)corpId agentId:(NSString *)agentId){
 
     [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_WechatWork appKey:appkey appSecret:nil redirectURL:nil];

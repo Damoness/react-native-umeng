@@ -1,7 +1,20 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
   package="com.example.damonessreactnativeumeng">
 
-    <uses-permission android:name="android.permission.INTERNET" />
+   <queries>
+      <package android:name="com.tencent.mm" />            // 指定微信包名
+      <package android:name="com.tencent.mobileqq" />    //指定qq包名
+      <package android:name="com.sina.weibo" />             //指定微博包名
+      <package android:name="com.tencent.wework" />      //指定企业微信包名
+      <package android:name="com.qzone" />                   //指定QQ空间包名
+      <package android:name="com.alibaba.android.rimet" /> // 指定钉钉包名
+      <package android:name="com.eg.android.AlipayGphone" /> // 指定支付宝包名
+      <package android:name="com.instagram.android" />         // 指定instagram包名
+    </queries>
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
       android:name=".MainApplication"
@@ -21,7 +34,27 @@
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
       </activity>
+      <activity
+        android:name=".wxapi.WXEntryActivity"
+        android:configChanges="keyboardHidden|orientation|screenSize"
+        android:exported="true"
+        android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+<!--      <provider-->
+<!--        android:name="android.support.v4.content.FileProvider"-->
+<!--        android:authorities="${applicationId}.fileprovider"-->
+<!--        android:exported="false"-->
+<!--        android:grantUriPermissions="true">-->
+<!--        <meta-data-->
+<!--          android:name="android.support.FILE_PROVIDER_PATHS"-->
+<!--          android:resource="@xml/filepaths"/>-->
+<!--      </provider>-->
+
+
       <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
+
+
+
+
     </application>
 
 </manifest>

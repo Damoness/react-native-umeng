@@ -282,7 +282,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.inabr.qichang;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zofund.crmmanage.test;
 				PRODUCT_NAME = ReactNativeUmengExample;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -306,7 +306,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.inabr.qichang;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zofund.crmmanage.test;
 				PRODUCT_NAME = ReactNativeUmengExample;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";

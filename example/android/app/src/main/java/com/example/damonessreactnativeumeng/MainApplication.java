@@ -11,6 +11,8 @@ import com.facebook.soloader.SoLoader;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 import com.damoness.rn.umeng.DplusReactPackage;
+import com.umeng.commonsdk.UMConfigure;
+import com.umeng.socialize.PlatformConfig;
 
 public class MainApplication extends Application implements ReactApplication {
 
@@ -47,6 +49,18 @@ public class MainApplication extends Application implements ReactApplication {
     super.onCreate();
     SoLoader.init(this, /* native exopackage */ false);
     initializeFlipper(this, getReactNativeHost().getReactInstanceManager()); // Remove this line if you don't want Flipper enabled
+
+    UMConfigure.init(this,"5a12384aa40fa3551f0001d1"
+      ,"umeng",UMConfigure.DEVICE_TYPE_PHONE,"");//58edcfeb310c93091c000be2 5965ee00734be40b580001a0
+
+    // 微信设置
+    PlatformConfig.setWeixin("wx027de62cf741667e","2be841b3bac5e82323bbf49e2901853a");
+    PlatformConfig.setWXFileProvider("com.tencent.sample2.fileprovider");
+
+    // 企业微信设置
+    PlatformConfig.setWXWork("ww5a3c9b5d4dbd50d3","","1000005","wwauth5a3c9b5d4dbd50d3000005");
+    PlatformConfig.setWXWorkFileProvider("com.tencent.sample2.fileprovider");
+
   }
 
   /**

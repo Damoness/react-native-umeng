@@ -29,7 +29,7 @@
 			<string>wechat</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>wx52dafcf5b9efb111</string>
+				<string>wx027de62cf741667e</string>
 			</array>
 		</dict>
 		<dict>
@@ -39,7 +39,7 @@
 			<string>wechatwork</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>wwauth5a3c9b5d4dbd50d3000004</string>
+				<string>wwauth51245dd93992e59f000009</string>
 			</array>
 		</dict>
 	</array>
@@ -72,10 +72,10 @@
 		<string>wechat</string>
 		<string>weixin</string>
 		<string>weixinULAPI</string>
-    <string>wxwork</string>
-    <string>wxworkdebug</string>
-    <string>wxworkrdm</string>
-    <string>wxworkrelease</string>
+		<string>wxwork</string>
+		<string>wxworkdebug</string>
+		<string>wxworkrdm</string>
+		<string>wxworkrelease</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
