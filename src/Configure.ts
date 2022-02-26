@@ -1,9 +1,9 @@
-import { NativeModules } from 'react-native';
+import { NativeModules, Platform } from 'react-native';
 
-const Configure = NativeModules.RNUMConfigure;
+const Configure = NativeModules.DMNConfigure;
 
 export function initApp(appKey: string, channel: string) {
-  return Configure.initWithAppKey(appKey, channel);
+  return Configure.initApp(appKey, channel);
 }
 
 //
@@ -12,7 +12,11 @@ export function setWeChat(
   appSecret: string,
   universalLink: string
 ) {
-  Configure.setWeChat(appKey, appSecret, universalLink);
+  if (Platform.OS === 'ios') {
+    Configure.setWeChat(appKey, appSecret, universalLink);
+  } else if (Platform.OS === 'android') {
+    Configure.setWeChat(appKey, appSecret);
+  }
 }
 
 export function setWeChatWork(appKey: string, corpId: string, agentId: string) {

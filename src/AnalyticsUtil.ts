@@ -3,7 +3,7 @@
  */
 import { NativeModules } from 'react-native';
 
-const AnalyticsModule = NativeModules.UMAnalyticsModule;
+const AnalyticsModule = NativeModules.DMNAnalyticsModule;
 
 export default class AnalyticsUtil {
   static onEvent(eventId: string) {

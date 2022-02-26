@@ -3,7 +3,7 @@
  */
 import { NativeModules } from 'react-native';
 
-const ShareModule = NativeModules.UMShareModule;
+const ShareModule = NativeModules.DMNShareModule;
 
 type AuthUserInfo = {
   uid: string;
@@ -19,7 +19,7 @@ type AuthUserInfo = {
   refreshToken: string;
 };
 
-export enum Platform {
+export enum SharePlatform {
   Wechat = 2, //微信
   Wechat_TimeLine = 3, //朋友圈
   WechatWork = 4, //企业微信
@@ -29,7 +29,7 @@ export enum Platform {
  * 授权
  * @param platform 平台
  */
-export async function auth(platform: Platform): Promise<AuthUserInfo> {
+export async function auth(platform: SharePlatform): Promise<AuthUserInfo> {
   return new Promise((resolve, reject) => {
     ShareModule.auth(platform, (code: number, result: any, message: string) => {
       if (code === 200) {
@@ -54,7 +54,7 @@ export async function shareboard(
   icon: string,
   link: string,
   title: string,
-  platforms: Platform[]
+  platforms: SharePlatform[]
 ): Promise<String> {
   return new Promise((resolve, reject) => {
     ShareModule.shareboard(
@@ -83,7 +83,7 @@ export async function share(
   icon: string,
   link: string,
   title: string,
-  platform: Platform
+  platform: SharePlatform
 ): Promise<string> {
   return new Promise((resolve, reject) => {
     ShareModule.share(
@@ -119,7 +119,7 @@ export async function shareLinkUrl(
   content: string,
   link: string,
   icon: string,
-  platform: Platform
+  platform: SharePlatform
 ) {
   return share(content, icon, link, title, platform);
 }
@@ -130,7 +130,7 @@ export async function shareLinkUrl(
  * @param platform ：  平台
  * @returns
  */
-export async function shareImageUrl(imageUrl: string, platform: Platform) {
+export async function shareImageUrl(imageUrl: string, platform: SharePlatform) {
   return share('', imageUrl, '', '', platform);
 }
 
@@ -140,7 +140,7 @@ export async function shareImageUrl(imageUrl: string, platform: Platform) {
  * @param platform
  * @returns
  */
-export async function shareText(text: string, platform: Platform) {
+export async function shareText(text: string, platform: SharePlatform) {
   return share(text, '', '', '', platform);
 }
 

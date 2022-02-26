@@ -1,15 +1,14 @@
 //
 //  RNUMConfigure.m
-//  UMComponent
 //
-//  Created by wyq.Cloudayc on 14/09/2017.
+//  Created by Damoness on 26/02/2022.
 //  Copyright © 2017 Facebook. All rights reserved.
 //
 
-#import "RNUMConfigure.h"
+#import "DMNConfigure.h"
 #import <UMShare/UMShare.h>
 
-@implementation RNUMConfigure
+@implementation DMNConfigure
 
 RCT_EXPORT_MODULE();
 
@@ -18,7 +17,7 @@ RCT_EXPORT_MODULE();
   return dispatch_get_main_queue();
 }
 
-RCT_EXPORT_METHOD(initWithAppKey:(NSString *)appkey channel:(NSString *)channel)
+RCT_EXPORT_METHOD(initApp:(NSString *)appkey channel:(NSString *)channel)
 {
   SEL sel = NSSelectorFromString(@"setWraperType:wrapperVersion:");
   if ([UMConfigure respondsToSelector:sel]) {

@@ -6,25 +6,24 @@ import {
   Button,
   Alert,
   SafeAreaView,
-  Platform as Platform1,
 } from 'react-native';
-import { ShareUtil, Configure, Platform } from '@damoness/react-native-umeng';
+import {
+  ShareUtil,
+  Configure,
+  SharePlatform,
+} from '@damoness/react-native-umeng';
 
 import appJSON from '../app.json';
 
 let { umeng, wechatWork, wechat } = appJSON;
 
-// let wechat = appJSON['wechat-BieXiaBuyCar'];
-
-if (Platform1.OS === 'ios') {
-  Configure.initApp(umeng.appKey, 'RN');
-  Configure.setWeChat(wechat.appKey, wechat.appSecret, wechat.universalLink);
-  Configure.setWeChatWork(
-    wechatWork.appKey,
-    wechatWork.corpId,
-    wechatWork.agentId
-  );
-}
+Configure.initApp(umeng.appKey, 'RN');
+Configure.setWeChat(wechat.appKey, wechat.appSecret, wechat.universalLink);
+Configure.setWeChatWork(
+  wechatWork.appKey,
+  wechatWork.corpId,
+  wechatWork.agentId
+);
 
 export default function App() {
   return (
@@ -34,7 +33,7 @@ export default function App() {
           title={'微信登录'}
           onPress={async () => {
             try {
-              let re = await ShareUtil.auth(Platform.Wechat);
+              let re = await ShareUtil.auth(SharePlatform.Wechat);
               console.log(re);
               Alert.alert(JSON.stringify(re));
             } catch (error) {
@@ -46,7 +45,7 @@ export default function App() {
           title={'企业微信登录'}
           onPress={async () => {
             try {
-              let re = await ShareUtil.auth(Platform.WechatWork);
+              let re = await ShareUtil.auth(SharePlatform.WechatWork);
               console.log(re);
               Alert.alert(JSON.stringify(re));
             } catch (error) {
@@ -58,7 +57,7 @@ export default function App() {
           title={'微信登录 报错'}
           onPress={async () => {
             try {
-              await ShareUtil.auth(Platform.Wechat + 2);
+              await ShareUtil.auth(SharePlatform.Wechat + 2);
             } catch (error) {
               console.log('error', error);
               Alert.alert(JSON.stringify(error));
@@ -73,7 +72,11 @@ export default function App() {
               'http://t1.qichangv.com/images/logo/favition.png',
               'https://hot.cnbeta.com/articles/game/1097481.htm',
               '标题',
-              [Platform.Wechat, Platform.Wechat_TimeLine, Platform.WechatWork]
+              [
+                SharePlatform.Wechat,
+                SharePlatform.Wechat_TimeLine,
+                SharePlatform.WechatWork,
+              ]
             );
           }}
           title="分享面板 - 分享"
@@ -86,7 +89,11 @@ export default function App() {
               'http://t1.qichangv.com/images/logo/favition.png',
               '',
               '标题',
-              [Platform.Wechat, Platform.Wechat_TimeLine, Platform.WechatWork]
+              [
+                SharePlatform.Wechat,
+                SharePlatform.Wechat_TimeLine,
+                SharePlatform.WechatWork,
+              ]
             );
           }}
           title="分享面板 - 分享图片"
@@ -96,7 +103,7 @@ export default function App() {
           onPress={() => {
             ShareUtil.shareImageUrl(
               'https://static.cnbetacdn.com/article/2021/0807/ac0ec0fe399be7d.jpg',
-              Platform.Wechat
+              SharePlatform.Wechat
             );
           }}
           title="分享图片"
@@ -105,7 +112,7 @@ export default function App() {
         <Button
           onPress={() => {
             try {
-              ShareUtil.shareText('分享文字', Platform.Wechat_TimeLine);
+              ShareUtil.shareText('分享文字', SharePlatform.Wechat_TimeLine);
             } catch (error) {
               console.log(error);
             }
@@ -121,7 +128,7 @@ export default function App() {
                 '内容',
                 'https://github.com/damoness/react-native-umeng',
                 'https://static.cnbetacdn.com/article/2021/0807/ac0ec0fe399be7d.jpg',
-                Platform.Wechat + 1
+                SharePlatform.Wechat + 1
               ).then(
                 (data) => {
                   console.log(data);

@@ -1,17 +1,16 @@
 //
 //  PushModule.m
-//  UMComponent
 //
-//  Created by wyq.Cloudayc on 11/09/2017.
+//  Created by Damoness on 26/02/2022.
 //  Copyright © 2017 Facebook. All rights reserved.
 //
 
-#import "UMPushModule.h"
+#import "DMNPushModule.h"
 #import <UMPush/UMessage.h>
 #import <React/RCTConvert.h>
 #import <React/RCTEventDispatcher.h>
 
-@implementation UMPushModule
+@implementation DMNPushModule
 
 RCT_EXPORT_MODULE();
 

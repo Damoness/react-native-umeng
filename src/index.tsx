@@ -1,4 +1,4 @@
-import ShareUtil, { Platform } from './ShareUtil';
+import ShareUtil, { SharePlatform } from './ShareUtil';
 import * as Configure from './Configure';
 import AnalyticsUtil from './AnalyticsUtil';
-export { ShareUtil, Platform, AnalyticsUtil, Configure };
+export { ShareUtil, SharePlatform, AnalyticsUtil, Configure };

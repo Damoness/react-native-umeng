@@ -1,8 +1,7 @@
 //
-//  RNUMConfigure.h
-//  UMComponent
+//  DMNConfigure.h
 //
-//  Created by wyq.Cloudayc on 14/09/2017.
+//  Created by Damoness on 26/02/2022.
 //  Copyright © 2017 Facebook. All rights reserved.
 //
 
@@ -10,7 +9,7 @@
 #import <UMCommon/UMCommon.h>
 #import <React/RCTBridgeModule.h>
 
-@interface RNUMConfigure : NSObject <RCTBridgeModule>
+@interface DMNConfigure : NSObject <RCTBridgeModule>
 
 
 @end

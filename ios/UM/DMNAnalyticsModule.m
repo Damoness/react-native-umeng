@@ -2,16 +2,16 @@
 //  analytics.m
 //  analytics
 //
-//
-//  Copyright (c) 2016年 tendcloud. All rights reserved.
+//  Created by Damoness on 26/02/2022.
+//  Copyright © 2017 Facebook. All rights reserved.
 //
 
 #import <UMCommon/MobClick.h>
-#import "UMAnalyticsModule.h"
+#import "DMNAnalyticsModule.h"
 #import <React/RCTConvert.h>
 #import <React/RCTEventDispatcher.h>
 
-@implementation UMAnalyticsModule
+@implementation DMNAnalyticsModule
 
 RCT_EXPORT_MODULE();
 

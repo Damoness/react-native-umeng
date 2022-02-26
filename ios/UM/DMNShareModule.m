@@ -1,18 +1,17 @@
 //
 //  ShareModule.h
-//  UMComponent
 //
-//  Created by wyq.Cloudayc on 11/09/2017.
+//  Created by Damoness on 26/02/2022.
 //  Copyright © 2017 Facebook. All rights reserved.
 //
 
-#import "UMShareModule.h"
+#import "DMNShareModule.h"
 #import <UMShare/UMShare.h>
 #import <UShareUI/UShareUI.h>
 #import <React/RCTConvert.h>
 #import <React/RCTEventDispatcher.h>
 
-@implementation UMShareModule
+@implementation DMNShareModule
 
 RCT_EXPORT_MODULE();
 

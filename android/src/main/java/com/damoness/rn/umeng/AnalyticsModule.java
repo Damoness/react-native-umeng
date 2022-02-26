@@ -38,7 +38,7 @@ public class AnalyticsModule extends ReactContextBaseJavaModule {
 
     @Override
     public String getName() {
-        return "UMAnalyticsModule";
+        return "DMNAnalyticsModule";
     }
 
     /********************************U-App统计*********************************/

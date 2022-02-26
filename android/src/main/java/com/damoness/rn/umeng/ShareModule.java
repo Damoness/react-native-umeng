@@ -45,7 +45,7 @@ public class ShareModule extends ReactContextBaseJavaModule {
     }
     @Override
     public String getName() {
-        return "UMShareModule";
+        return "DMNShareModule";
     }
     private static void runOnMainThread(Runnable runnable) {
         mSDKHandler.postDelayed(runnable, 0);
