@@ -2,10 +2,11 @@ import * as React from 'react';
 
 import {
   StyleSheet,
-  ScrollView,
-  Button,
-  Alert,
   SafeAreaView,
+  SectionList,
+  Text,
+  View,
+  TouchableOpacity,
 } from 'react-native';
 import {
   ShareUtil,
@@ -25,125 +26,124 @@ Configure.setWeChatWork(
   wechatWork.agentId
 );
 
+const getCommonFunctionData = (platform: SharePlatform) => {
+  return [
+    {
+      title: '登录',
+      onPress: async () => {
+        try {
+          ShareUtil.auth(platform);
+        } catch (error) {
+          console.log(error);
+        }
+      },
+    },
+    {
+      title: '分享文字',
+      onPress: () => {
+        ShareUtil.shareText('这是一段文字', platform);
+      },
+    },
+    {
+      title: '分享图片',
+      onPress: () => {
+        ShareUtil.shareImageUrl(
+          'https://static.cnbetacdn.com/article/2021/0807/ac0ec0fe399be7d.jpg',
+          platform
+        );
+      },
+    },
+    {
+      title: '分享链接',
+      onPress: async () => {
+        try {
+          ShareUtil.shareLinkUrl(
+            '标题',
+            '内容',
+            'https://github.com/damoness/react-native-umeng',
+            'https://static.cnbetacdn.com/article/2021/0807/ac0ec0fe399be7d.jpg',
+            platform
+          ).then(
+            (data) => {
+              console.log(data);
+            },
+            (error) => {
+              console.log('error', error);
+            }
+          );
+        } catch (error) {
+          console.log(error);
+        }
+      },
+    },
+  ];
+};
+
 export default function App() {
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView contentInsetAdjustmentBehavior="always" centerContent>
-        <Button
-          title={'微信登录'}
-          onPress={async () => {
-            try {
-              let re = await ShareUtil.auth(SharePlatform.Wechat);
-              console.log(re);
-              Alert.alert(JSON.stringify(re));
-            } catch (error) {
-              console.log('error', error);
-            }
-          }}
-        />
-        <Button
-          title={'企业微信登录'}
-          onPress={async () => {
-            try {
-              let re = await ShareUtil.auth(SharePlatform.WechatWork);
-              console.log(re);
-              Alert.alert(JSON.stringify(re));
-            } catch (error) {
-              console.log('error', error);
-            }
-          }}
-        />
-        <Button
-          title={'微信登录 报错'}
-          onPress={async () => {
-            try {
-              await ShareUtil.auth(SharePlatform.Wechat + 2);
-            } catch (error) {
-              console.log('error', error);
-              Alert.alert(JSON.stringify(error));
-            }
-          }}
-        />
-
-        <Button
-          onPress={() => {
-            ShareUtil.shareboard(
-              '内容',
-              'http://t1.qichangv.com/images/logo/favition.png',
-              'https://hot.cnbeta.com/articles/game/1097481.htm',
-              '标题',
-              [
-                SharePlatform.Wechat,
-                SharePlatform.Wechat_TimeLine,
-                SharePlatform.WechatWork,
-              ]
-            );
-          }}
-          title="分享面板 - 分享"
-        />
-
-        <Button
-          onPress={() => {
-            ShareUtil.shareboard(
-              '内容',
-              'http://t1.qichangv.com/images/logo/favition.png',
-              '',
-              '标题',
-              [
-                SharePlatform.Wechat,
-                SharePlatform.Wechat_TimeLine,
-                SharePlatform.WechatWork,
-              ]
-            );
-          }}
-          title="分享面板 - 分享图片"
-        />
-
-        <Button
-          onPress={() => {
-            ShareUtil.shareImageUrl(
-              'https://static.cnbetacdn.com/article/2021/0807/ac0ec0fe399be7d.jpg',
-              SharePlatform.Wechat
-            );
-          }}
-          title="分享图片"
-        />
-
-        <Button
-          onPress={() => {
-            try {
-              ShareUtil.shareText('分享文字', SharePlatform.Wechat_TimeLine);
-            } catch (error) {
-              console.log(error);
-            }
-          }}
-          title="分享文字"
-        />
-
-        <Button
-          onPress={async () => {
-            try {
-              ShareUtil.shareLinkUrl(
-                '标题',
-                '内容',
-                'https://github.com/damoness/react-native-umeng',
-                'https://static.cnbetacdn.com/article/2021/0807/ac0ec0fe399be7d.jpg',
-                SharePlatform.Wechat + 1
-              ).then(
-                (data) => {
-                  console.log(data);
+      <SectionList
+        sections={[
+          {
+            title: '通用',
+            data: [
+              {
+                title: '分享面板',
+                onPress: () => {
+                  ShareUtil.shareboard(
+                    '内容',
+                    'http://t1.qichangv.com/images/logo/favition.png',
+                    'https://hot.cnbeta.com/articles/game/1097481.htm',
+                    '标题',
+                    [
+                      SharePlatform.Wechat,
+                      SharePlatform.Wechat_TimeLine,
+                      SharePlatform.WechatWork,
+                    ]
+                  );
                 },
-                (error) => {
-                  console.log('error', error);
-                }
-              );
-            } catch (error) {
-              console.log(error);
-            }
-          }}
-          title="分享链接"
-        />
-      </ScrollView>
+              },
+            ],
+          },
+          {
+            title: '微信',
+            data: getCommonFunctionData(SharePlatform.Wechat),
+          },
+          {
+            title: '企业微信',
+            data: [
+              {
+                title: '企业微信登录 - 有问题 - TODO',
+                onPress: async () => {
+                  try {
+                    ShareUtil.auth(SharePlatform.WechatWork);
+                  } catch (error) {
+                    console.log(error);
+                  }
+                },
+              },
+              ...getCommonFunctionData(SharePlatform.WechatWork).slice(1),
+            ],
+          },
+          {
+            title: '朋友圈',
+            data: [
+              ...getCommonFunctionData(SharePlatform.Wechat_TimeLine).slice(1),
+            ],
+          },
+        ]}
+        keyExtractor={(item, index) => item.title + index}
+        renderSectionHeader={({ section: { title } }) => (
+          <View style={styles.section}>
+            <Text style={styles.sectionTitle}>{title}</Text>
+          </View>
+        )}
+        renderItem={({ item }) => (
+          <TouchableOpacity style={styles.item} onPress={item.onPress}>
+            <Text style={styles.itemTitle}>{item.title}</Text>
+          </TouchableOpacity>
+        )}
+      />
     </SafeAreaView>
   );
 }
@@ -151,8 +151,20 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
+  },
+  section: {
+    height: 30,
     justifyContent: 'center',
+    alignItems: 'center',
+  },
+  sectionTitle: {},
+  item: {
+    height: 40,
+    justifyContent: 'center',
+    backgroundColor: 'gray',
+  },
+  itemTitle: {
+    color: 'white',
   },
   box: {
     width: 60,

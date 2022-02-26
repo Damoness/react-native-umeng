@@ -39,7 +39,7 @@
 			<string>wechatwork</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>wwauth51245dd93992e59f000009</string>
+				<string>wwauth5a3c9b5d4dbd50d3000005</string>
 			</array>
 		</dict>
 	</array>
@@ -83,14 +83,6 @@
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
-		<key>NSExceptionDomains</key>
-		<dict>
-			<key>localhost</key>
-			<dict>
-				<key>NSExceptionAllowsInsecureHTTPLoads</key>
-				<true/>
-			</dict>
-		</dict>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string></string>

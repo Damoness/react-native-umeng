@@ -35,7 +35,10 @@ export async function auth(platform: SharePlatform): Promise<AuthUserInfo> {
       if (code === 200) {
         resolve(result);
       } else {
-        reject(message);
+        reject({
+          code,
+          message,
+        });
       }
     });
   });
@@ -64,7 +67,12 @@ export async function shareboard(
       title,
       platforms,
       (code: number, message: string) => {
-        code === 200 ? resolve(message) : reject(message);
+        code === 200
+          ? resolve(message)
+          : reject({
+              code,
+              message,
+            });
       }
     );
   });
@@ -98,7 +106,10 @@ export async function share(
           resolve(message);
         } else {
           console.log(code, message);
-          reject(message);
+          reject({
+            code,
+            message,
+          });
         }
       }
     );
