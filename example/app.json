@@ -20,6 +20,7 @@
   },
   "wechatWork": {
     "appKey": "wwauth5a3c9b5d4dbd50d3000005",
+    "appSecret": "T4rIOiRRhGMLgSg1ysSAVBUongtNAw00oVs_cllULzk",
     "corpId": "ww5a3c9b5d4dbd50d3",
     "agentId": "1000005",
     "ios_bundle_id": "com.zofund.crmmanage.test",

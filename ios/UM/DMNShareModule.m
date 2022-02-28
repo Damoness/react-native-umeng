@@ -23,13 +23,13 @@ RCT_EXPORT_MODULE();
 - (UMSocialPlatformType)platformType:(NSInteger)platform
 {
   switch (platform) {
-    case 0: // QQ
+    case 0: //QQ
       return UMSocialPlatformType_QQ;
-    case 1: // Sina
+    case 1: //Sina
       return UMSocialPlatformType_Sina;
-    case 2: // wechat
+    case 2: //wechat
       return UMSocialPlatformType_WechatSession;
-    case 3:
+    case 3: //
       return UMSocialPlatformType_WechatTimeLine;
     case 4:
         return UMSocialPlatformType_WechatWork;

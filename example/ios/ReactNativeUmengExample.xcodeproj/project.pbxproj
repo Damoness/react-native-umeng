@@ -303,7 +303,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = X3384B9A6U;
+				DEVELOPMENT_TEAM = 8XXP5W7RV4;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = ReactNativeUmengExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 3.8.4;
@@ -314,6 +315,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.zofund.crmmanage.test;
 				PRODUCT_NAME = ReactNativeUmengExample;
+				PROVISIONING_PROFILE_SPECIFIER = "Development _com.zofund.crmmanage.test";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};

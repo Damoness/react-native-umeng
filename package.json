@@ -29,7 +29,8 @@
     "release": "release-it",
     "example": "yarn --cwd example",
     "pods": "cd example && pod-install --quiet",
-    "bootstrap": "yarn example && yarn && yarn pods"
+    "bootstrap": "yarn example && yarn && yarn pods",
+    "ar": "adb reverse tcp:8081 tcp:8081"
   },
   "keywords": [
     "react-native",

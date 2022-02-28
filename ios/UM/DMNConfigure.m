@@ -17,7 +17,10 @@ RCT_EXPORT_MODULE();
   return dispatch_get_main_queue();
 }
 
-RCT_EXPORT_METHOD(initApp:(NSString *)appkey channel:(NSString *)channel)
+RCT_EXPORT_METHOD(initApp:(NSString *)appkey
+                  channel:(NSString *)channel
+                  resolver:(RCTPromiseResolveBlock)resolve
+                  rejecter:(RCTPromiseRejectBlock)reject)
 {
   SEL sel = NSSelectorFromString(@"setWraperType:wrapperVersion:");
   if ([UMConfigure respondsToSelector:sel]) {
@@ -28,12 +31,18 @@ RCT_EXPORT_METHOD(initApp:(NSString *)appkey channel:(NSString *)channel)
   [UMConfigure setLogEnabled:YES];//设置打开日志
 
   [UMConfigure initWithAppkey:appkey channel:channel];
+    
+  resolve(@(true));
 }
 
 /**
  设置微信
  */
-RCT_EXPORT_METHOD(setWeChat:(NSString *)appkey appSecret:(NSString *)appSecret universalLink:(NSString *)universalLink){
+RCT_EXPORT_METHOD(setWeChat:(NSString *)appkey
+                  appSecret:(NSString *)appSecret
+                  universalLink:(NSString *)universalLink
+                  resolver:(RCTPromiseResolveBlock)resolve
+                  rejecter:(RCTPromiseRejectBlock)reject){
 
 
     //配置微信平台的Universal Links
@@ -44,20 +53,28 @@ RCT_EXPORT_METHOD(setWeChat:(NSString *)appkey appSecret:(NSString *)appSecret u
     /* 设置微信的appKey和appSecret */
     [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_WechatSession appKey:appkey appSecret:appSecret redirectURL:nil];
 
+    resolve(@(true));
 }
 
 
 /**
  设置企业微信
  */
-RCT_EXPORT_METHOD(setWeChatWork:(NSString *)appkey corpId:(NSString *)corpId agentId:(NSString *)agentId){
+RCT_EXPORT_METHOD(setWeChatWork:(NSString *)appkey
+                  appSecret:(NSString *)appSecret
+                  corpId:(NSString *)corpId
+                  agentId:(NSString *)agentId
+                  resolver:(RCTPromiseResolveBlock)resolve
+                  rejecter:(RCTPromiseRejectBlock)reject){
 
-    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_WechatWork appKey:appkey appSecret:nil redirectURL:nil];
+    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_WechatWork appKey:appkey appSecret:appSecret redirectURL:nil];
 
     //extraInitDic，企业微信增加了corpid和agentid，故在UMSocialGlobal的全局配置里面增加extraInitDic来存储额外的初始化参数。extraInitDic的key:corpId和agentId为固定值
     [UMSocialGlobal shareInstance].extraInitDic =@{
     @(UMSocialPlatformType_WechatWork):@{@"corpId":corpId,@"agentId":agentId}
     };
+    
+    resolve(@(true));
 }
 
 @end

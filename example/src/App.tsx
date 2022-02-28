@@ -18,14 +18,6 @@ import appJSON from '../app.json';
 
 let { umeng, wechatWork, wechat } = appJSON;
 
-Configure.initApp(umeng.appKey, 'RN');
-Configure.setWeChat(wechat.appKey, wechat.appSecret, wechat.universalLink);
-Configure.setWeChatWork(
-  wechatWork.appKey,
-  wechatWork.corpId,
-  wechatWork.agentId
-);
-
 const getCommonFunctionData = (platform: SharePlatform) => {
   return [
     {
@@ -80,6 +72,24 @@ const getCommonFunctionData = (platform: SharePlatform) => {
 };
 
 export default function App() {
+  React.useEffect(() => {
+    async function init() {
+      await Configure.initApp(umeng.appKey, 'RN');
+      await Configure.setWeChat(
+        wechat.appKey,
+        wechat.appSecret,
+        wechat.universalLink
+      );
+      await Configure.setWeChatWork(
+        wechatWork.appKey,
+        wechatWork.appSecret,
+        wechatWork.corpId,
+        wechatWork.agentId
+      );
+    }
+    init();
+  }, []);
+
   return (
     <SafeAreaView style={styles.container}>
       <SectionList
