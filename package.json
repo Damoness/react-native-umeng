@@ -1,6 +1,6 @@
 {
   "name": "@damoness/react-native-umeng",
-  "version": "1.8.0",
+  "version": "1.9.0",
   "description": "友盟",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
