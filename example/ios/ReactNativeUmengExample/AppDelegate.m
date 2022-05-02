@@ -14,6 +14,7 @@
 // ------
 //友盟
 #import <UMCommon/UMCommon.h>
+
 //友盟统计
 #import <UMCommon/MobClick.h>
 
@@ -29,6 +30,8 @@
 #define WXAppSecret @"9a41a18395afb5744f2ac73e6ad06bde"
 // ------
 
+
+#import <UMPush/UMessage.h>
 
 #ifdef FB_SONARKIT_ENABLED
 #import <FlipperKit/FlipperClient.h>
@@ -48,6 +51,8 @@ static void InitializeFlipper(UIApplication *application) {
 }
 #endif
 
+#import "RNNotifications.h"
+
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -55,8 +60,6 @@ static void InitializeFlipper(UIApplication *application) {
   #ifdef FB_SONARKIT_ENABLED
     InitializeFlipper(application);
   #endif
-  
-  //[self initUMeng];
   
   RCTBridge *bridge = [[RCTBridge alloc] initWithDelegate:self launchOptions:launchOptions];
   RCTRootView *rootView = [[RCTRootView alloc] initWithBridge:bridge
@@ -70,6 +73,10 @@ static void InitializeFlipper(UIApplication *application) {
   rootViewController.view = rootView;
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
+  
+  
+  [RNNotifications startMonitorNotifications];
+  
   return YES;
 }
 
@@ -100,11 +107,10 @@ static void InitializeFlipper(UIApplication *application) {
   /* 设置微信的appKey和appSecret */
   [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_WechatSession appKey:WXAppKey appSecret:WXAppSecret redirectURL:nil];
   
-  
-  /* 设置企业微信 */
-//  [UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_WechatWork appKey:<#(NSString *)#> appSecret:<#(NSString *)#> redirectURL:<#(NSString *)#>
 
 }
+
+
 
 
 //URI Scheme 
@@ -125,6 +131,21 @@ static void InitializeFlipper(UIApplication *application) {
   }
   
   return YES;
+}
+
+#pragma mark - 推送
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+  [RNNotifications didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
+  [UMessage registerDeviceToken:deviceToken];
+}
+
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+  [RNNotifications didFailToRegisterForRemoteNotificationsWithError:error];
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))completionHandler {
+  [RNNotifications didReceiveBackgroundNotification:userInfo withCompletionHandler:completionHandler];
 }
 
 @end

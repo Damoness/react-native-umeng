@@ -7,12 +7,16 @@ import {
   Text,
   View,
   TouchableOpacity,
+  Alert,
 } from 'react-native';
 import {
   ShareUtil,
   Configure,
   SharePlatform,
+  PushUtil,
 } from '@damoness/react-native-umeng';
+
+import { Notifications } from 'react-native-notifications';
 
 import appJSON from '../app.json';
 
@@ -88,6 +92,13 @@ export default function App() {
       );
     }
     init();
+
+    Notifications.getInitialNotification().then((x) => {
+      if (x) {
+        console.log('x', JSON.stringify(x));
+        Alert.alert(x.payload.aps.alert.title);
+      }
+    });
   }, []);
 
   return (
@@ -139,6 +150,88 @@ export default function App() {
             title: '朋友圈',
             data: [
               ...getCommonFunctionData(SharePlatform.Wechat_TimeLine).slice(1),
+            ],
+          },
+
+          {
+            title: '推送',
+            data: [
+              {
+                title: '请求推送',
+                onPress: () => {
+                  Notifications.registerRemoteNotifications();
+
+                  Notifications.events().registerRemoteNotificationsRegistered(
+                    (event) => {
+                      // TODO: Send the token to my server so it could send back push notifications...
+                      console.log('Device Token Received', event.deviceToken);
+                    }
+                  );
+
+                  Notifications.events().registerNotificationReceivedForeground(
+                    (notification, completion) => {
+                      console.log(
+                        `Notification received in foreground: ${notification.title} : ${notification.body}`
+                      );
+                      completion({ alert: true, sound: true, badge: true });
+                    }
+                  );
+
+                  Notifications.events().registerNotificationOpened(
+                    (notification, completion) => {
+                      console.log(
+                        `Notification opened: ${JSON.stringify(
+                          notification.payload
+                        )}`
+                      );
+
+                      Alert.alert(notification.payload.aps.alert.title);
+                      completion();
+                    }
+                  );
+                },
+              },
+              {
+                title: '增加标签',
+                onPress: async () => {
+                  let remain = await PushUtil.addTag(
+                    'a' + Math.floor(Math.random() * 100)
+                  );
+                  console.log('remain', remain);
+                },
+              },
+              {
+                title: '删除标签',
+                onPress: async () => {},
+              },
+              {
+                title: '获取标签列表',
+                onPress: async () => {
+                  let list = await PushUtil.getTagList();
+                  console.log('data', list);
+                },
+              },
+              {
+                title: '增加别名',
+                onPress: async () => {
+                  let r = await PushUtil.addAlias('test1', 'a2');
+                  console.log('r', r);
+                },
+              },
+              {
+                title: '增加排他别名',
+                onPress: async () => {
+                  let r = await PushUtil.addExclusiveAlias('test2', 'aaaa');
+                  console.log('r', r);
+                },
+              },
+              {
+                title: '删除别名',
+                onPress: async () => {
+                  let r = await PushUtil.deleteAlias('test1', 'aaaa');
+                  console.log('r', r);
+                },
+              },
             ],
           },
         ]}
